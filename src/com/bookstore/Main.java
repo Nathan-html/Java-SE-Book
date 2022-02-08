@@ -19,8 +19,12 @@ public class Main {
 		users.add(new Member("charles", "zbliat", LocalDate.of(1987, 5, 16)));
 		users.add(admin);
 		
+		Book book1 = new Book("book1", LocalDate.of(2000, 1, 01));
+		book1.setListOfLoans(admin.getFirstName());
+		
 		List<Object> books = new ArrayList<Object>();
-		books.add(new Book("book1", LocalDate.of(2000, 1, 01)));
+		books.add(book1);
+		
 		
 		// login or sign in
 		System.out.println(
@@ -36,7 +40,7 @@ public class Main {
 			if(choose.equals("con")||
 			   choose.equals("connect")) {
 				
-				System.out.println("tape your_first_name-your_last_name_r\nExample : nathan-flacher");
+				System.out.println("taper your_first_name-your_last_name_r\nExample : nathan-flacher");
 				String userName = req.next();
 				
 				if(users.contains(userName)) {
@@ -64,7 +68,7 @@ public class Main {
 		while(true) {
 			
 			System.out.println(
-				"que shouaitez vous faire ?\r\n"+
+				"Que shouaitez vous faire ?\r\n"+
 				" * lister les livres\r\n"+
 				" * crée un livre\r\n"+
 				" * emprunter un livre\r\n"+
@@ -73,18 +77,31 @@ public class Main {
 			
 			String choose = req.next();
 			
-			if(choose.equals("lister")){
-				System.out.println("test");
+			if(choose.equals("list")||
+			choose.equals("liste")||
+			choose.equals("lister")){
 				for(Object x : books) {
 					System.out.println(x.toString());
 				}
 			}
+			
 			else if(choose.equals("create")||
 					choose.equals("crée")) {
+				System.out.println("le titre du livre");
+				String title = req.next();
+				System.out.println("l'année de la sortie");
+				int year = req.nextInt();
+				System.out.println("le mois");
+				int mouth = req.nextInt();
+				System.out.println("le jour");
+				int day = req.nextInt();
+				books.add(new Book(title, LocalDate.of(year, mouth, day)));
+				System.out.println("livre crée");
 			}
 			else if(choose.equals("borrow")||
 					choose.equals("emprunter")) {
 			}
+			System.out.println("\r\n--------------------------------------\r\n");
 			
 		}
 

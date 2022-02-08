@@ -16,14 +16,14 @@ public class Book {
 	}
 	
 	public String toString() {
-		String msg = null;
+		String msg = "\r\n";
 		for(Object x : listOfLoans) {
-			msg = msg + "{" + x + "}\r\n";
+			msg = msg + "    {" + x + "},\r\n";
 		}
-		return "{title:"+ this.getTitle() + ", " +
-			   "releaseDate:" + this.getReleaseDate() + "\r\n" +
-			   " listOfLoans: {\r\n" + msg +
-			   "}";
+		return "{\r\n  title:"+ this.getTitle() + ", \r\n" +
+			   "  releaseDate:" + this.getReleaseDate() + ", \r\n" +
+			   "  listOfLoans: {" + msg +
+			   "},";
 	}
 	 
 	public String getTitle() {
@@ -37,8 +37,8 @@ public class Book {
 		return listOfLoans;
 	}
 
-	public void setListOfLoans(List<String> listOfLoans) {
-		this.listOfLoans = listOfLoans;
+	public void setListOfLoans(String string) {
+		this.listOfLoans.add(string);
 	}
 	
 }
