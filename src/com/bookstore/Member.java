@@ -1,15 +1,17 @@
 package com.bookstore;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Member {
 	
 	private int id;
+	private String name;
 	private String firstName;
 	private String lastName;
-	private Date birthAt;
+	private LocalDate birthAt;
 	
-	public Member(String firstName, String lastName, Date birthAt) {
+	public Member(String firstName, String lastName, LocalDate birthAt) {
+		this.name = this.getFirstName()+"-"+this.getLastName();
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setBirthAt(birthAt);
@@ -28,10 +30,10 @@ public class Member {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Date getBirthAt() {
+	public LocalDate getBirthAt() {
 		return birthAt;
 	}
-	public void setBirthAt(Date birthAt) {
+	public void setBirthAt(LocalDate birthAt) {
 		this.birthAt = birthAt;
 	}
 
@@ -41,5 +43,9 @@ public class Member {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
 	}
 }
